@@ -1,9 +1,16 @@
+import os
+import json
+
+
 def handler(event, context):
     print(event)
+    json_region = os.environ['AWS_REGION']
     return {
-        "status": 200,
-        "text": "Thanks for working",
+        "statusCode": 200,
         "headers": {
-            'Content-Type': 'application/json',
-        }
+            "Content-Type": "application/json"
+        },
+        "body": json.dumps({
+            "Region ": json_region
+        })
     }
